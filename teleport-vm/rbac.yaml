@@ -1,0 +1,60 @@
+kind: role
+metadata:
+  description: access kubernete cluster
+  name: kube-user
+spec:
+  allow:
+    app_labels:
+      '*': '*'
+    aws_role_arns:
+    - '{{internal.aws_role_arns}}'
+    db_labels:
+      '*': '*'
+    db_names:
+    - '{{internal.db_names}}'
+    db_users:
+    - '{{internal.db_users}}'
+    kubernetes_groups:
+    - '{{internal.kubernetes_groups}}'
+    - system:masters
+    kubernetes_labels:
+      '*': '*'
+    kubernetes_users:
+    - '{{internal.kubernetes_users}}'
+    - system-masters
+    logins:
+    - '{{internal.logins}}'
+    node_labels:
+      '*': '*'
+    rules:
+    - resources:
+      - event
+      verbs:
+      - list
+      - read
+    - resources:
+      - session
+      verbs:
+      - read
+      - list
+      where: contains(session.participants, user.metadata.name)
+    windows_desktop_labels:
+      '*': '*'
+    windows_desktop_logins:
+    - '{{internal.windows_logins}}'
+  deny: {}
+  options:
+    cert_format: standard
+    create_host_user: false
+    desktop_clipboard: true
+    desktop_directory_sharing: true
+    enhanced_recording:
+    - command
+    - network
+    forward_agent: true
+    max_session_ttl: 30h0m0s
+    pin_source_ip: false
+    port_forwarding: true
+    record_session:
+      desktop: true
+version: v5

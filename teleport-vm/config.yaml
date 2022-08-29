@@ -1,0 +1,42 @@
+#
+# A Sample Teleport configuration file.
+#
+# Things to update:
+#  1. license.pem: You only need a license from https://dashboard.goteleport.com
+#     if you are an Enterprise customer.
+#
+version: v2
+teleport:
+  nodename: teleport.canvas-playground.site
+  data_dir: /var/lib/teleport
+  log:
+    output: stderr
+    severity: INFO
+    format:
+      output: text
+  ca_pin: ""
+  diag_addr: ""
+auth_service:
+  enabled: "yes"
+  listen_addr: 0.0.0.0:3025
+  proxy_listener_mode: multiplex
+ssh_service:
+  enabled: "yes"
+  commands:
+  - name: hostname
+    command: [hostname]
+    period: 1m0s
+proxy_service:
+  enabled: "yes"
+  https_cert_file: /opt/fullchain1.pem 
+  https_key_file: /opt/privkey1.pem
+  listen_addr: 0.0.0.0:3023
+  tunnel_listen_addr: 0.0.0.0:3024
+  web_listen_addr: 0.0.0.0:3080
+  public_addr: teleport.canvas-playground.site:3080
+  ssh_public_addr: teleport.canvas-playground.site:3023
+  tunnel_public_addr: teleport.canvas-playground.site:3024
+  kube_listen_addr: 0.0.0.0:3026
+  kube_public_addr: teleport.canvas-playground.site:3026
+  https_keypairs: []
+  acme: {}
