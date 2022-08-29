@@ -1,0 +1,5 @@
+roles: kube
+  #authToken: 66d447315c31da72d2d4dbaf692fbdd7
+proxyAddr: teleport.canvas-playground.site:3080
+kubeClusterName: cluster-1
+teleportVersionOverride: 10.1.4
