@@ -8,3 +8,31 @@ helm install teleport-agent-app teleport/teleport-kube-agent \
   --set "apps[0].insecure_skip_verify=true" \
   --set "apps[0].public_addr=argocd.canvas-playground.site" \
   --set "apps[0].labels.env=prod"
+
+
+kind: role
+metadata:
+  name: kube-user-viewer
+spec:
+  allow:
+    kubernetes_groups:
+    - viewer
+    kubernetes_labels:
+      env: staging
+  deny: {}
+  options:
+    cert_format: standard
+    create_host_user: false
+    desktop_clipboard: true
+    desktop_directory_sharing: true
+    enhanced_recording:
+    - command
+    - network
+    forward_agent: false
+    max_session_ttl: 30h0m0s
+    pin_source_ip: false
+    port_forwarding: true
+    record_session:
+      default: best_effort
+      desktop: true
+version: v5
