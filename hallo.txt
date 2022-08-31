@@ -1,1 +1,10 @@
-hallo
+helm install teleport-agent-app teleport/teleport-kube-agent \
+  --namespace argocd\
+  --set roles=app \
+  --set proxyAddr=teleport.canvas-playground.site:3080 \
+  --set authToken=4ba4a6bbe75de61a060f7c597f58fc47 \
+  --set "apps[0].name=argocd" \
+  --set "apps[0].uri=https://argocd-server.argocd.svc.cluster.local" \
+  --set "apps[0].insecure_skip_verify=true" \
+  --set "apps[0].public_addr=argocd.canvas-playground.site" \
+  --set "apps[0].labels.env=prod"
