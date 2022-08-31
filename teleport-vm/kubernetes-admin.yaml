@@ -1,0 +1,198 @@
+kind: role
+metadata:
+  description: admin kubernetes cluster
+  id: 1661310027596493238
+  name: kube-user-admin
+spec:
+  allow:
+    app_labels:
+      '*': '*'
+    aws_role_arns:
+    - '{{internal.aws_role_arns}}'
+    db_labels:
+      '*': '*'
+    db_names:
+    - '{{internal.db_names}}'
+    db_users:
+    - '{{internal.db_users}}'
+    kubernetes_groups:
+    - '{{internal.kubernetes_groups}}'
+    - system:masters
+    kubernetes_labels:
+      '*': '*'
+    kubernetes_users:
+    - '{{internal.kubernetes_users}}'
+    - system-masters
+    logins:
+    - '{{internal.logins}}'
+    node_labels:
+      '*': '*'
+    rules:
+    - resources:
+      - user
+      verbs:
+      - list
+      - create
+      - read
+      - update
+      - delete
+    - resources:
+      - role
+      verbs:
+      - list
+      - create
+      - read
+      - update
+      - delete
+    - resources:
+      - oidc
+      verbs:
+      - list
+      - create
+      - read
+      - update
+      - delete
+    - resources:
+      - saml
+      verbs:
+      - list
+      - create
+      - read
+      - update
+      - delete
+    - resources:
+      - github
+      verbs:
+      - list
+      - create
+      - read
+      - update
+      - delete
+    - resources:
+      - oidc_request
+      verbs:
+      - list
+      - create
+      - read
+      - update
+      - delete
+    - resources:
+      - saml_request
+      verbs:
+      - list
+      - create
+      - read
+      - update
+      - delete
+    - resources:
+      - github_request
+      verbs:
+      - list
+      - create
+      - read
+      - update
+      - delete
+    - resources:
+      - cluster_audit_config
+      verbs:
+      - list
+      - create
+      - read
+      - update
+      - delete
+    - resources:
+      - cluster_auth_preference
+      verbs:
+      - list
+      - create
+      - read
+      - update
+      - delete
+    - resources:
+      - auth_connector
+      verbs:
+      - list
+      - create
+      - read
+      - update
+      - delete
+    - resources:
+      - cluster_name
+      verbs:
+      - list
+      - create
+      - read
+      - update
+      - delete
+    - resources:
+      - cluster_networking_config
+      verbs:
+      - list
+      - create
+      - read
+      - update
+      - delete
+    - resources:
+      - session_recording_config
+      verbs:
+      - list
+      - create
+      - read
+      - update
+      - delete
+    - resources:
+      - trusted_cluster
+      verbs:
+      - list
+      - create
+      - read
+      - update
+      - delete
+    - resources:
+      - remote_cluster
+      verbs:
+      - list
+      - create
+      - read
+      - update
+      - delete
+    - resources:
+      - token
+      verbs:
+      - list
+      - create
+      - read
+      - update
+      - delete
+    - resources:
+      - database_certificate
+      verbs:
+      - list
+      - create
+      - read
+      - update
+      - delete
+    - resources:
+      - connection_diagnostic
+      verbs:
+      - list
+      - create
+      - read
+      - update
+      - delete
+  deny: {}
+  options:
+    cert_format: standard
+    create_host_user: false
+    desktop_clipboard: true
+    desktop_directory_sharing: true
+    enhanced_recording:
+    - command
+    - network
+    forward_agent: true
+    max_session_ttl: 30h0m0s
+    pin_source_ip: false
+    port_forwarding: true
+    record_session:
+      desktop: false
+version: v5
